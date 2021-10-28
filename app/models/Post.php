@@ -50,7 +50,7 @@ class Post
         }
     }
 
-    public function handlerPost()
+    private function handlerPost()
     {
         $data = $_POST;
         $data += [
@@ -63,7 +63,7 @@ class Post
             if (!$this->db->checkUniqEmail($user['email'], 'users')) {
                 $this->db->insert($user, 'users');
             }
-            $user_id = $this->db->getUserId($user['email'], 'users');
+            $user_id = $this->db->getUserId($user['email'], 'user_id', 'users');
             $post += $user_id;
             $this->db->insert($post, 'posts');
 

@@ -49,10 +49,10 @@ class QueryBuilder
         return $sth->fetch(PDO::FETCH_NUM);
     }
 
-    public function getUserId(string $email, $table)
+    public function getUserId(string $email, $nameFieldId, $table)
     {
         $select = $this->queryFactory -> newSelect ();
-        $select->cols (['user_id'])
+        $select->cols ([$nameFieldId])
             ->from($table)
             ->where('email = :email')
             ->bindValues(['email' => $email]);
