@@ -22,6 +22,7 @@ $containerBuilder->addDefinitions([
     return new PDO("$driver:host=$host;dbname=$db_name", $username, $password);
     },
 
+
     Paginator::class => function() {
         $totalItems = null;
         $itemsPerPage = $_GET['show_by'] ?? 10;
@@ -49,6 +50,7 @@ $container = $containerBuilder->build();
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute(['GET'],  '/guest_book', ['App\controllers\HomeController', 'showGuestBook']);
+    $r->addRoute(['GET'],  '/show_by', ['App\services\ValidateShowBy', 'validate']);
     $r->addRoute(['POST'],  '/guest_book', ['App\models\Post', 'validateRequest']);
     $r->addRoute(['GET'],  '/guest_book/create_post', ['App\controllers\HomeController', 'showCreatePost']);
 });

@@ -13,6 +13,7 @@
     <main>
         <div class="text-center">
         <h1>Guest Book</h1>
+            <?= flash()->display() ?>
         </div>
         <ul>
         <?php foreach ($posts as $post): ?>
