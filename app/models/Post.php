@@ -4,22 +4,16 @@ namespace App\models;
 
 use donatj\UserAgent\UserAgentParser;
 use App\services\QueryBuilder;
-use Respect\Validation\Validator;
-use Tamtamchik\SimpleFlash\Flash;
 use App\services\Helper;
-
-
 
 
 class Post
 {
     private QueryBuilder $db;
     private UserAgentParser $userAgent;
-    private Validator $v;
 
-    public function __construct(QueryBuilder $queryBuilder, UserAgentParser $userAgentParser, Validator $validator)
+    public function __construct(QueryBuilder $queryBuilder, UserAgentParser $userAgentParser)
     {
-        $this->v = $validator;
         $this->userAgent = $userAgentParser;
         $this->db = $queryBuilder;
     }
