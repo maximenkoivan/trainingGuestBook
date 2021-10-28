@@ -24,35 +24,10 @@ class Post
         $this->db = $queryBuilder;
     }
 
-    public function validateRequest()
+
+    public function handlerPost()
     {
-
-        if (!$this->v::noWhitespace()->stringType()->notEmpty()->length(5, 30)->validate($_POST['username'])) {
-            Flash::message('The "username" field should be from 5 to 30 characters long and should not consist of spaces.');
-        }
-
-        if (!$this->v::email()->validate($_POST['email'])) {
-            Flash::message('The "Email" field cannot be empty and must contain email.');
-        }
-
-        if (!$this->v::noWhitespace()->notEmpty()->length(1, 1000)->validate($_POST['post'])) {
-            Flash::message('The "Message" field cannot be empty and must not exceed 1000 characters..');
-        }
-
-        if(!$this->v::dateTime()->validate($_POST['date_time'])) {
-            Flash::message('Incorrect data has been entered in the "Date and Time" field.');
-        }
-
-        if (Flash::hasMessages()) {
-            Helper::redirectTo('/guest_book/create_post', $_POST);
-        } else {
-            $this->handlerPost();
-        }
-    }
-
-    private function handlerPost()
-    {
-        $data = $_POST;
+        $data = $_SESSION['data'];
         $data += [
             'user_ip' => ip2long(Helper::getIp()),
             'browser_info' => $this->userAgent->parse()->browser() . ' ' . $this->userAgent->parse()->browserVersion()
@@ -68,5 +43,6 @@ class Post
             $this->db->insert($post, 'posts');
 
             Helper::redirectTo('/guest_book');
+            unset($_SESSION['data']);
         }
  }

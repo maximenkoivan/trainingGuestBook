@@ -28,7 +28,7 @@ class Helper
     public static function redirectTo($path, $data = null)
     {
         if ($data) {
-        $_SESSION['old_data'] = $data;
+        $_SESSION['data'] = $data;
         }
         header('Location: ' . $path);
     }

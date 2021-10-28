@@ -51,7 +51,8 @@ $container = $containerBuilder->build();
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute(['GET'],  '/guest_book', ['App\controllers\HomeController', 'showGuestBook']);
     $r->addRoute(['GET'],  '/show_by', ['App\services\ValidateShowBy', 'validate']);
-    $r->addRoute(['POST'],  '/guest_book', ['App\models\Post', 'validateRequest']);
+    $r->addRoute(['POST'],  '/guest_book', ['App\services\ValidateShowBy', 'validateRequest']);
+    $r->addRoute(['GET'],  '/handler_post', ['App\models\Post', 'handlerPost']);
     $r->addRoute(['GET'],  '/guest_book/create_post', ['App\controllers\HomeController', 'showCreatePost']);
 });
 

@@ -17,15 +17,15 @@
                     <div class="container-fluid">
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleInputPassword1" class="form-label">User name</label>
-                            <input type="text" name="username" class="form-control" id="exampleInputPassword1" value="<?= $_SESSION['old_data']['username'] ?? null ?>">
+                            <input type="text" name="username" class="form-control" id="exampleInputPassword1" value="<?= $_SESSION['data']['username'] ?? null ?>">
                         </div>
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $_SESSION['old_data']['email'] ?? null ?>">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $_SESSION['data']['email'] ?? null ?>">
                         </div>
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleFormControl" class="form-label">Message</label>
-                            <input type="text" name="post" class="form-control" id="exampleFormControl" value="<?= $_SESSION['old_data']['post'] ?? null ?>">
+                            <input type="text" name="post" class="form-control" id="exampleFormControl" value="<?= $_SESSION['data']['post'] ?? null ?>">
                         </div>
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleInputEmail1" class="form-label">Date and time</label>
