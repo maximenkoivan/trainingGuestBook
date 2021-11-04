@@ -16,8 +16,8 @@
     <?php if ($paginator->getNextUrl()): ?>
         <li><a class="page-link" href="<?php echo $paginator->getNextUrl(); ?>">Next &raquo;</a></li>
     <?php endif; ?>
-    <form class="pagination"  action="/show_by" method="get">
-        <input type="number" min="1" max="100" name="show_by" value="<?= $showBy ?>">
+    <form class="pagination"  action="/" method="GET">
+        <input type="number" min="1" max="100" name="showBy" value="<?= $showBy ?>">
     </form>
 </ul>
 

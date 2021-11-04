@@ -1,59 +1,13 @@
 <?php
+
 if (!session_id()) @session_start();
 
 require '../vendor/autoload.php';
 
-
-use DI\ContainerBuilder;
-use JasonGrimes\Paginator;
-use League\Plates\Engine;
-use Aura\SqlQuery\QueryFactory;
-use Respect\Validation\Validator;
-
-
-$containerBuilder = new ContainerBuilder;
-$containerBuilder->addDefinitions([
-    PDO::class => function() {
-    $driver = 'mysql';
-    $host = 'localhost';
-    $db_name = 'test_site';
-    $username = 'root';
-    $password = 'root';
-    return new PDO("$driver:host=$host;dbname=$db_name", $username, $password);
-    },
-
-
-    Paginator::class => function() {
-        $totalItems = null;
-        $itemsPerPage = $_GET['show_by'] ?? 10;
-        $currentPage = $_GET['page'] ?? 1;
-        $urlPattern = isset($_GET['show_by']) ? "?show_by={$_GET['show_by']}&page=(:num)" : '?page=(:num)';
-        return new Paginator($totalItems, $itemsPerPage, $currentPage, $urlPattern);
-    },
-
-    Engine::class => function() {
-    return new Engine('../app/views');
-    },
-
-    QueryFactory::class => function() {
-        return new QueryFactory('mysql');
-    },
-
-    Validator::class => function() {
-    return new Validator();
-    },
-
-
-]);
-$container = $containerBuilder->build();
-
-
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute(['GET'],  '/guest_book', ['App\controllers\HomeController', 'showGuestBook']);
-    $r->addRoute(['GET'],  '/show_by', ['App\services\ValidateShowBy', 'validate']);
-    $r->addRoute(['POST'],  '/guest_book', ['App\services\ValidateShowBy', 'validateRequest']);
-    $r->addRoute(['GET'],  '/handler_post', ['App\models\Post', 'handlerPost']);
-    $r->addRoute(['GET'],  '/guest_book/create_post', ['App\controllers\HomeController', 'showCreatePost']);
+    $r->addRoute(['GET'],  '/', ['App\controllers\HomeController', 'index']);
+    $r->addRoute(['GET'],  '/create_post', ['App\controllers\HomeController', 'showCreatePost']);
+    $r->addRoute(['POST'],  '/guest_book', ['App\controllers\HomeController', 'handlerPost']);
 });
 
 // Fetch method and URI from somewhere
@@ -73,13 +27,18 @@ switch ($routeInfo[0]) {
         http_response_code(404);
         break;
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-        $allowedMethods = $routeInfo[1];
         // ... 405 Method Not Allowed
         http_response_code(405);
         break;
     case FastRoute\Dispatcher::FOUND:
-       $container->call($routeInfo[1], $routeInfo[2]);
+        $handler = $routeInfo[1];
+        $action = $handler[1];
+        $controller = new $handler[0];
+        call_user_func([$controller, $action]);
         break;
+    default:
+        // ... 404 Not Found
+        http_response_code(404);
 }
 
 

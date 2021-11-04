@@ -1,4 +1,9 @@
-<!doctype html>
+<?php
+
+use App\services\Session;
+
+?>
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,15 +22,15 @@
                     <div class="container-fluid">
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleInputPassword1" class="form-label">User name</label>
-                            <input type="text" name="username" class="form-control" id="exampleInputPassword1" value="<?= $_SESSION['data']['username'] ?? null ?>">
+                            <input type="text" name="username" class="form-control" id="exampleInputPassword1" value="<?= Session::getInstance()->get('data', 'username') ?>">
                         </div>
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $_SESSION['data']['email'] ?? null ?>">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= Session::getInstance()->get('data', 'email') ?>">
                         </div>
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleFormControl" class="form-label">Message</label>
-                            <input type="text" name="post" class="form-control" id="exampleFormControl" value="<?= $_SESSION['data']['post'] ?? null ?>">
+                            <input type="text" name="post" class="form-control" id="exampleFormControl" value="<?= Session::getInstance()->get('data', 'post') ?>">
                         </div>
                         <div class="mb-sm-1 col-md-4">
                             <label for="exampleInputEmail1" class="form-label">Date and time</label>
@@ -36,8 +41,12 @@
                         </div>
                     </div>
                 </form>
+                <div class="container-fluid ">
+                <p><form action="/" method="get"><button type="submit" class="btn btn-primary">Guest Book</button></form></p>
+                </div>
+
         </div>
     </main>
 </body>
 </html>
-<?php unset($_SESSION['old_data']) ?>
+<?php Session::getInstance()->destroy('data') ?>

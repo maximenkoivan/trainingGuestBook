@@ -7,12 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInit52f9f19995e7c8189d7076a5d0a03c64
 {
     public static $files = array (
-        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         '2df68f9e79c919e2d88506611769ed2e' => __DIR__ . '/..' . '/respect/stringifier/src/stringify.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'da5f6548f070d3d306f90eee42dd5de6' => __DIR__ . '/..' . '/donatj/phpuseragentparser/src/UserAgentParser.php',
+        '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
-        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
         '6157b075b923803e5ef157aeb43b83bd' => __DIR__ . '/..' . '/tamtamchik/simple-flash/src/function.php',
     );
 
@@ -34,34 +33,20 @@ class ComposerStaticInit52f9f19995e7c8189d7076a5d0a03c64
             'Respect\\Validation\\' => 19,
             'Respect\\Stringifier\\' => 20,
         ),
-        'P' => 
-        array (
-            'Psr\\Container\\' => 14,
-            'PhpDocReader\\' => 13,
-        ),
-        'O' => 
-        array (
-            'Opis\\Closure\\' => 13,
-        ),
         'L' => 
         array (
             'League\\Plates\\' => 14,
         ),
-        'I' => 
+        'K' => 
         array (
-            'Invoker\\' => 8,
+            'Kint\\' => 5,
         ),
         'F' => 
         array (
             'FastRoute\\' => 10,
         ),
-        'D' => 
-        array (
-            'DI\\' => 3,
-        ),
         'A' => 
         array (
-            'Aura\\SqlQuery\\' => 14,
             'App\\' => 4,
         ),
     );
@@ -87,37 +72,17 @@ class ComposerStaticInit52f9f19995e7c8189d7076a5d0a03c64
         array (
             0 => __DIR__ . '/..' . '/respect/stringifier/src',
         ),
-        'Psr\\Container\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/container/src',
-        ),
-        'PhpDocReader\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
-        ),
-        'Opis\\Closure\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/opis/closure/src',
-        ),
         'League\\Plates\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/plates/src',
         ),
-        'Invoker\\' => 
+        'Kint\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-di/invoker/src',
+            0 => __DIR__ . '/..' . '/kint-php/kint/src',
         ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
-        ),
-        'DI\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-di/php-di/src',
-        ),
-        'Aura\\SqlQuery\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/aura/sqlquery/src',
         ),
         'App\\' => 
         array (

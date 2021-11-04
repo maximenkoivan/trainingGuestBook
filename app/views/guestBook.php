@@ -17,6 +17,7 @@
         </div>
         <ul>
         <?php foreach ($posts as $post): ?>
+
             <div class="container-fluid col-md-6">
                 <li><i><?= $post['post'] ?></i></li>
                 <div>
@@ -27,7 +28,7 @@
         </ul>
         <div class="container-fluid d-flex justify-content-center  fixed-bottom">
             <?=$this->insert('paginator', $paginator)?>
-        <form class="" action="/guest_book/create_post" method="get"><button class="btn btn-primary" type="submit">Leave a message</button></form>
+        <form action="/create_post" method="GET"><button class="btn btn-primary" type="submit">Leave a message</button></form>
         </div>
     </main>
 </body>
