@@ -114,6 +114,8 @@ class HomeController
             'browser_info' => User::getBrowserInfo()
         ];
 
+        $data['date_time'] = strtotime($data['date_time']);
+
         $post = array_diff_key($data, ['email' => null, 'username' => null]);
         $user = array_diff($data, $post);
 
